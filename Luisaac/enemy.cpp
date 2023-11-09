@@ -3,7 +3,7 @@
 
 Enemy::Enemy(SDL_Renderer* renderer)
 {
-	this->texture = IMG_LoadTexture(renderer, "enemy.png");
+	this->texture = IMG_LoadTexture(renderer, "enemy/enemy.png");
 	this->x = rand() % 1137 + 64;
 	this->y = rand() % 600 + 64;
 	this->tSpawn = SDL_GetTicks();

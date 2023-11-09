@@ -32,9 +32,9 @@ Player player;
 std::vector<Projectile> projectiles;
 std::vector<Enemy> enemies;
 
-SDL_Texture* heart_texture = IMG_LoadTexture(gRenderer, "heart.png");
+SDL_Texture* heart_texture = IMG_LoadTexture(gRenderer, "hpbar/heart.png");
 
-SDL_Texture* halfheart_texture = IMG_LoadTexture(gRenderer, "halfheart.png");
+SDL_Texture* halfheart_texture = IMG_LoadTexture(gRenderer, "hpbar/halfheart.png");
 
 void initHpBar()
 {
@@ -83,15 +83,15 @@ const int level[12][20] =
 	{3, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 4}
 };
 
-SDL_Texture* file0 = IMG_LoadTexture(gRenderer, "0-frame.png");
-SDL_Texture* file1 = IMG_LoadTexture(gRenderer, "1-frame.png");
-SDL_Texture* file2 = IMG_LoadTexture(gRenderer, "3-frame.png");
-SDL_Texture* file3 = IMG_LoadTexture(gRenderer, "3-frame-botleft.png");
-SDL_Texture* file4 = IMG_LoadTexture(gRenderer, "3-frame-botright.png");
-SDL_Texture* file5 = IMG_LoadTexture(gRenderer, "3-frame-topright.png");
-SDL_Texture* file6 = IMG_LoadTexture(gRenderer, "0-frame-left.png");
-SDL_Texture* file7 = IMG_LoadTexture(gRenderer, "0-frame-down.png");
-SDL_Texture * file8 = IMG_LoadTexture(gRenderer, "0-frame-right.png");
+SDL_Texture* file0 = IMG_LoadTexture(gRenderer, "tiles/0-frame.png");
+SDL_Texture* file1 = IMG_LoadTexture(gRenderer, "tiles/1-frame.png");
+SDL_Texture* file2 = IMG_LoadTexture(gRenderer, "tiles/3-frame.png");
+SDL_Texture* file3 = IMG_LoadTexture(gRenderer, "tiles/3-frame-botleft.png");
+SDL_Texture* file4 = IMG_LoadTexture(gRenderer, "tiles/3-frame-botright.png");
+SDL_Texture* file5 = IMG_LoadTexture(gRenderer, "tiles/3-frame-topright.png");
+SDL_Texture* file6 = IMG_LoadTexture(gRenderer, "tiles/0-frame-left.png");
+SDL_Texture* file7 = IMG_LoadTexture(gRenderer, "tiles/0-frame-down.png");
+SDL_Texture * file8 = IMG_LoadTexture(gRenderer, "tiles/0-frame-right.png");
 
 SDL_Texture* levelSources[]
 {

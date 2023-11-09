@@ -44,7 +44,7 @@ Player::Player()
 
 void Player::setTexture(SDL_Renderer* renderer)
 {
-	playerTexture = IMG_LoadTexture(renderer, "player.png");
+	playerTexture = IMG_LoadTexture(renderer, "player/player.png");
 }
 
 void Player::setX(int width)

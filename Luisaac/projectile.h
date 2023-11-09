@@ -35,7 +35,7 @@ inline Projectile::Projectile(int x, int y, Direction direction, uint32_t launch
 	this->y = y;
 	this->direction = direction;
 	this->launched = launched;
-	this->graphic = IMG_LoadTexture(renderer, "projectile.png");
+	this->graphic = IMG_LoadTexture(renderer, "projectiles/projectile.png");
 }
 
 inline int Projectile::getProjectileSpeed()
