@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Luisaac
+/Luisaac/x64/Debug
+/x64/Debug
+/Luisaac.sln
+/Luisaac/Luisaac.vcxproj.user
+/Luisaac/Luisaac.vcxproj.filters
+/Luisaac/Luisaac.vcxproj
