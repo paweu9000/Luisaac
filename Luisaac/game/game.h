@@ -3,6 +3,7 @@
 #include "../level/level.h"
 #include "../hpbar/hpbar.h"
 #include "window.h"
+#include <vector>
 
 //enemy respawn rate
 const int16_t respawnRate = 2000;
