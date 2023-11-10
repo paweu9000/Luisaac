@@ -7,8 +7,6 @@
 #include "projectiles/projectile.h"
 #include "enemy/enemy.h"
 #include "game/game.h"
-#include "level/level.h"
-#include "hpbar/hpbar.h"
 
 int main(int argc, char* args[])
 {
