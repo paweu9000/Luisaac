@@ -22,7 +22,7 @@ while the game difficulty increases continously.
 
 ## Todo
 
-- [Add scores]
-- [Add persistent score sheets]
-- [Add pausing and restarting]
-- [Add death]
+- Add scores
+- Add persistent score sheets
+- Add pausing and restarting
+- Add death
