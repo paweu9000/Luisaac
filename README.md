@@ -26,3 +26,7 @@ while the game difficulty increases continously.
 - Add persistent score sheets
 - Add pausing and restarting
 - Add death
+
+## License
+
+Completely free as it is using game assets from the original game
