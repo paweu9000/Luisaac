@@ -16,6 +16,7 @@ void initializePlayer(SDL_Renderer* renderer)
 	player.setX(WIDTH);
 	player.setY(HEIGHT);
 	player.setTexture(renderer);
+	player.setRenderer(renderer);
 }
 
 void init()

@@ -34,7 +34,7 @@ void addProjectile(Direction d)
 
 void movePlayer()
 {
-	SDL_Rect pRect = { player.getX(), player.getY(), 64, 64 };
+	SDL_Rect pRect = { player.getX(), player.getY(), 60, 70 };
 	SDL_RenderCopy(gRenderer, player.getTexture(), NULL, &pRect);
 }
 
@@ -42,7 +42,7 @@ void moveEnemy()
 {
 	for (auto en : enemies)
 	{
-		SDL_Rect eRect = { en.getX(), en.getY(), 64, 64 };
+		SDL_Rect eRect = { en.getX(), en.getY(), 96, 96 };
 		SDL_RenderCopy(gRenderer, en.getTexture(), NULL, &eRect);
 	}
 }
