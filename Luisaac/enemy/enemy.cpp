@@ -71,7 +71,7 @@ bool Enemy::aggroPlayer(int x, int y)
 		if (vertical_textures.size() == vertical_t) this->vertical_t = 0;
 	}
 
-	return (abs_distance < 20);
+	return (abs_distance < 40);
 }
 
 void Enemy::getHit()

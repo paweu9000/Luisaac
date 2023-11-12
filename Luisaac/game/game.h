@@ -6,7 +6,7 @@
 #include <vector>
 
 //enemy respawn rate
-const int16_t respawnRate = 2000;
+int16_t respawnRate = 2000;
 
 //enemy last spawn
 int64_t lastSpawn = SDL_GetTicks();
@@ -22,7 +22,7 @@ bool shootR = false;
 bool shootD = false;
 bool shootU = false;
 
-
+int timer = SDL_GetTicks();
 
 std::vector<Projectile> projectiles;
 std::vector<Enemy> enemies;
@@ -44,6 +44,16 @@ void moveEnemy()
 	{
 		SDL_Rect eRect = { en.getX(), en.getY(), 96, 96 };
 		SDL_RenderCopy(gRenderer, en.getTexture(), NULL, &eRect);
+	}
+}
+
+void increaseDifficulty()
+{
+	if (SDL_GetTicks() - timer > 15000)
+	{
+		enemyLimit++;
+		if (respawnRate > 1000) respawnRate -= 200;
+		timer = SDL_GetTicks();
 	}
 }
 
@@ -259,6 +269,7 @@ void runGame()
 			checkMovement(e);
 			checkShooting(e);
 		}
+		increaseDifficulty();
 		handleMovement();
 		handleShooting();
 		createLevel();
