@@ -2,41 +2,27 @@
 
 ![Luisaac Gameplay](luisaac.gif)
 
-Luisaac is a game inspired by The Binding of Isaac, featuring [brief description of Luisaac].
+Luisaac is a game inspired by The Binding of Isaac, where you try to survive against endless respawning enemies.
 
 ## Table of Contents
 - [Gameplay](#gameplay)
-- [Features](#features)
-- [Installation](#installation)
 - [Controls](#controls)
-- [Contributing](#contributing)
+- [Todo](#Todo)
 - [License](#license)
 
 ## Gameplay
 
-[Include a brief overview of the gameplay and unique features of Luisaac.]
+Kill enemies, and try to get highest score,
+while the game difficulty increases continously.
 
-## Features
+## Controls
+- WSAD for movement
+- J, K, L, I keys for shooting
+- ESC to exit
 
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
+## Todo
 
-[Add more features as needed.]
-
-## Installation
-
-[Provide instructions on how to install and run Luisaac. Include any dependencies or system requirements.]
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/luisaac.git
-
-# Navigate to the project directory
-cd luisaac
-
-# Install dependencies
-npm install  # or yarn install
-
-# Run the game
-npm start    # or yarn start
+- [Add scores]
+- [Add persistent score sheets]
+- [Add pausing and restarting]
+- [Add death]
