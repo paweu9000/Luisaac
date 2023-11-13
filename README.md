@@ -2,7 +2,7 @@
 
 ![Luisaac Gameplay](luisaac.gif)
 
-Luisaac is a game inspired by The Binding of Isaac, where you try to survive against endless respawning enemies.
+Luisaac is a game inspired by The Binding of Isaac, where you try to survive against endless waves of enemies.
 
 ## Table of Contents
 - [Gameplay](#gameplay)
