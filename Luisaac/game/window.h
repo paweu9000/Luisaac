@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "../player/player.h"
+#include "score.h"
 
 const int WIDTH = 1280;
 const int HEIGHT = 768;
@@ -9,6 +10,7 @@ SDL_Window* gWindow = SDL_CreateWindow("Luisaac", SDL_WINDOWPOS_CENTERED, SDL_WI
 SDL_Renderer* gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 Player player;
+Score score = Score(gRenderer, 24, { 0xFF, 0xFF, 0xFF, 0xFF });
 
 void initializePlayer(SDL_Renderer* renderer)
 {
@@ -19,14 +21,22 @@ void initializePlayer(SDL_Renderer* renderer)
 	player.setRenderer(renderer);
 }
 
+// wypierdala ca³¹ gre - do naprawy
+void initializeScore()
+{
+	score.loadFont();
+}
+
 void init()
 {
 	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_UpdateWindowSurface(gWindow);
 	int imgFlags = IMG_INIT_PNG;
+	if (TTF_Init() == -1) printf("TTF Error");
 	if (!(IMG_Init(imgFlags) && imgFlags))
 	{
 		printf("Error");
 	}
 	initializePlayer(gRenderer);
+	initializeScore();
 }

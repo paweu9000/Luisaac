@@ -38,6 +38,12 @@ void movePlayer()
 	SDL_RenderCopy(gRenderer, player.getTexture(), NULL, &pRect);
 }
 
+void displayScore()
+{
+	SDL_Rect scoreRect = SDL_Rect{ 32, 32, 100, 100 };
+	SDL_RenderCopy(gRenderer, score.getTexture(), NULL, &scoreRect);
+}
+
 void moveEnemy()
 {
 	for (auto en : enemies)
@@ -164,7 +170,10 @@ bool checkForCollision(Projectile projectile)
 		if (projectile.getProjectileX() <= enemies[i].getX() + 64 && projectile.getProjectileX() >= enemies[i].getX()
 			&& projectile.getProjectileY() >= enemies[i].getY() && projectile.getProjectileY() <= enemies[i].getY() + 64) {
 			enemies[i].getHit();
-			if (enemies[i].getHp() <= 0) enemies.erase(enemies.begin() + i);
+			if (enemies[i].getHp() <= 0) {
+				enemies.erase(enemies.begin() + i);
+				score.addScore(50);
+			}
 			return true;
 		}
 	}
@@ -279,6 +288,7 @@ void runGame()
 		movePlayer();
 		aggroPlayer();
 		initHpBar(player.getHp());
+		displayScore();
 		SDL_RenderPresent(gRenderer);
 	}
 }
