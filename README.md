@@ -24,7 +24,7 @@ while the game difficulty increases continously.
 ## Todo
 
 - Add persistent score sheets
-- Add pausing and restarting
+- Add restarting
 - Add death
 
 ## License
