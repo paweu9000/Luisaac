@@ -18,6 +18,7 @@ while the game difficulty increases continously.
 ## Controls
 - WSAD for movement
 - J, K, L, I keys for shooting
+- P for Pause
 - ESC to exit
 
 ## Todo
