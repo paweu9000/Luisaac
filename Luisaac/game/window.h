@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "../player/player.h"
 #include "score.h"
+#include "pause.h"
 
 const int WIDTH = 1280;
 const int HEIGHT = 768;
@@ -11,6 +12,7 @@ SDL_Renderer* gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERAT
 
 Player player;
 Score score = Score(gRenderer, 24, { 0xFF, 0xFF, 0xFF, 0xFF });
+Pause pause;
 
 void initializePlayer(SDL_Renderer* renderer)
 {
@@ -21,7 +23,6 @@ void initializePlayer(SDL_Renderer* renderer)
 	player.setRenderer(renderer);
 }
 
-// wypierdala ca³¹ gre - do naprawy
 void initializeScore()
 {
 	score.loadFont();
@@ -39,4 +40,5 @@ void init()
 	}
 	initializePlayer(gRenderer);
 	initializeScore();
+	pause.initialize(gRenderer);
 }
