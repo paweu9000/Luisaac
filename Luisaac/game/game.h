@@ -22,6 +22,8 @@ bool shootR = false;
 bool shootD = false;
 bool shootU = false;
 
+bool paused = false;
+
 int timer = SDL_GetTicks();
 
 std::vector<Projectile> projectiles;
@@ -255,6 +257,20 @@ void aggroPlayer()
 	}
 }
 
+void showEventsWhenPaused()
+{
+	moveEnemy();
+	movePlayer();
+	for (int i = 0; i < projectiles.size(); i++) 
+	{
+		int pX = projectiles[i].getProjectileX(), pY = projectiles[i].getProjectileY();
+		SDL_Rect projRect = { pX, pY, 16, 16 };
+		SDL_RenderCopy(gRenderer, projectiles[i].getTexture(), NULL, &projRect);
+	}
+	SDL_Rect r = pause.getRect();
+	SDL_RenderCopy(gRenderer, pause.getTexture(), NULL, &r);
+}
+
 void runGame()
 {
 	init();
@@ -275,18 +291,33 @@ void runGame()
 				quit = true;
 				break;
 			}
-			checkMovement(e);
-			checkShooting(e);
+			if (e.key.keysym.sym == SDLK_p)
+			{
+				paused = !paused;
+				break;
+			}
+			if (!paused)
+			{
+				checkMovement(e);
+				checkShooting(e);
+			}
 		}
-		increaseDifficulty();
-		handleMovement();
-		handleShooting();
 		createLevel();
-		spawnEnemy();
-		moveEnemy();
-		moveProjectiles();
-		movePlayer();
-		aggroPlayer();
+		if (!paused)
+		{
+			increaseDifficulty();
+			handleMovement();
+			handleShooting();
+			spawnEnemy();
+			moveEnemy();
+			moveProjectiles();
+			movePlayer();
+			aggroPlayer();
+		}
+		else
+		{
+			showEventsWhenPaused();
+		}
 		initHpBar(player.getHp());
 		displayScore();
 		SDL_RenderPresent(gRenderer);
