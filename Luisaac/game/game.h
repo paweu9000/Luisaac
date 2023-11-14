@@ -293,7 +293,11 @@ void runGame()
 			}
 			if (e.key.keysym.sym == SDLK_p)
 			{
-				paused = !paused;
+				if (SDL_GetTicks() - pause.pause_delay > 300)
+				{
+					paused = !paused;
+					pause.pause_delay = SDL_GetTicks();
+				}
 				break;
 			}
 			if (!paused)

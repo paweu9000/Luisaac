@@ -9,6 +9,7 @@ public:
 	void initialize(SDL_Renderer* renderer);
 	SDL_Texture* getTexture();
 	SDL_Rect getRect();
+	int pause_delay;
 private:
 	SDL_Texture* texture;
 	SDL_Rect pause_rect;
