@@ -41,3 +41,8 @@ void Score::addScore(int points)
 	this->score_texture = SDL_CreateTextureFromSurface(this->renderer, surface);
 	SDL_FreeSurface(surface);
 }
+
+void Score::resetScore()
+{
+	this->score = 0;
+}

@@ -15,7 +15,7 @@ public:
 	SDL_Texture* getTexture();
 	SDL_Rect getRect();
 	void addScore(int points);
-
+	void resetScore();
 private:
 	SDL_Texture* score_texture = nullptr;
 	SDL_Rect rect;

@@ -5,30 +5,6 @@
 #include "window.h"
 #include <vector>
 
-//enemy respawn rate
-int16_t respawnRate = 2000;
-
-//enemy last spawn
-int64_t lastSpawn = SDL_GetTicks();
-
-int enemyLimit = 3;
-
-bool keyW = false;
-bool keyA = false;
-bool keyS = false;
-bool keyD = false;
-bool shootL = false;
-bool shootR = false;
-bool shootD = false;
-bool shootU = false;
-
-bool paused = false;
-
-int timer = SDL_GetTicks();
-
-std::vector<Projectile> projectiles;
-std::vector<Enemy> enemies;
-
 void addProjectile(Direction d)
 {
 	projectiles.push_back(Projectile(player.getX() + 20, player.getY() + 20, d, SDL_GetTicks(), gRenderer));
@@ -279,6 +255,9 @@ void runGame()
 	while (!quit)
 	{
 		SDL_RenderClear(gRenderer);
+		if (player.getHp() <= 0) {
+			resetGame();
+		}
 		while (SDL_PollEvent(&e) != 0)
 		{
 			if (e.type == SDL_QUIT)
