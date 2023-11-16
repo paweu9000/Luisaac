@@ -41,6 +41,8 @@ Player player;
 Score score = Score(gRenderer, 24, { 0xFF, 0xFF, 0xFF, 0xFF });
 Pause pause;
 
+int player_death_time = NULL;
+
 void initializePlayer(SDL_Renderer* renderer)
 {
 	player = Player();
@@ -84,4 +86,5 @@ void resetGame()
 	timer = SDL_GetTicks();
 	projectiles.erase(projectiles.begin(), projectiles.end());
 	enemies.erase(enemies.begin(), enemies.end());
+	player_death_time = NULL;
 }
