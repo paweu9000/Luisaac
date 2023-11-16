@@ -5,6 +5,8 @@
 #include "window.h"
 #include <vector>
 
+bool dead = false;
+
 void addProjectile(Direction d)
 {
 	projectiles.push_back(Projectile(player.getX() + 20, player.getY() + 20, d, SDL_GetTicks(), gRenderer));
@@ -258,6 +260,20 @@ void showEventsWhenPaused()
 	SDL_RenderCopy(gRenderer, pause.getTexture(), NULL, &r);
 }
 
+void showEventsWhenDead()
+{
+	moveEnemy();
+	movePlayer();
+	for (int i = 0; i < projectiles.size(); i++)
+	{
+		int pX = projectiles[i].getProjectileX(), pY = projectiles[i].getProjectileY();
+		SDL_Rect projRect = { pX, pY, 16, 16 };
+		SDL_RenderCopy(gRenderer, projectiles[i].getTexture(), NULL, &projRect);
+	}
+	SDL_Rect r = deathScreen.getRect();
+	SDL_RenderCopy(gRenderer, deathScreen.getTexture(), NULL, &r);
+}
+
 void runGame()
 {
 	init();
@@ -273,7 +289,7 @@ void runGame()
 			}
 			else if (player_death_time != NULL && SDL_GetTicks() - player_death_time >= 3000)
 			{
-				resetGame();
+				dead = true;
 			}
 		}
 		while (SDL_PollEvent(&e) != 0)
@@ -297,6 +313,12 @@ void runGame()
 				}
 				break;
 			}
+			if (e.key.keysym.sym == SDLK_r && dead)
+			{
+				resetGame();
+				dead = false;
+				break;
+			}
 			if (!paused)
 			{
 				checkMovement(e);
@@ -304,7 +326,7 @@ void runGame()
 			}
 		}
 		createLevel();
-		if (!paused)
+		if (!paused && !dead)
 		{
 			increaseDifficulty();
 			handleMovement();
@@ -315,9 +337,13 @@ void runGame()
 			movePlayer();
 			aggroPlayer();
 		}
-		else
+		else if (paused)
 		{
 			showEventsWhenPaused();
+		}
+		else if (dead)
+		{
+			showEventsWhenDead();
 		}
 		initHpBar(player.getHp());
 		displayScore();

@@ -4,6 +4,7 @@
 #include "score.h"
 #include "pause.h"
 #include "settings.h"
+#include "deathscreen.h"
 
 Settings settings = Settings();
 
@@ -40,6 +41,7 @@ SDL_Renderer* gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERAT
 Player player;
 Score score = Score(gRenderer, 24, { 0xFF, 0xFF, 0xFF, 0xFF });
 Pause pause;
+DeathScreen deathScreen;
 
 int player_death_time = NULL;
 
@@ -70,6 +72,7 @@ void init()
 	initializePlayer(gRenderer);
 	initializeScore();
 	pause.initialize(gRenderer);
+	deathScreen.initialize(gRenderer);
 }
 
 void resetScore()
