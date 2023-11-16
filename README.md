@@ -21,11 +21,6 @@ while the game difficulty increases continously.
 - P for Pause
 - ESC to exit
 
-## Todo
-
-- Add persistent score sheets
-- Add choice to restar in menu and after death
-
 ## License
 
 Completely free as it is using game assets from the original game
