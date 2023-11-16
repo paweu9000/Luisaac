@@ -115,6 +115,7 @@ void checkShooting(SDL_Event e)
 
 void shootByDirection()
 {
+	if (player.isDead) return;
 	if (keyD && shootU) addProjectile(RU);
 	else if (keyA && shootU) addProjectile(LU);
 	else if (keyD && shootD) addProjectile(RD);
@@ -182,6 +183,7 @@ void moveProjectiles()
 
 void spawnEnemy()
 {
+	if (player.isDead) return;
 	int64_t newTime = SDL_GetTicks();
 	if (enemies.size() < enemyLimit && newTime - lastSpawn >= respawnRate) {
 		lastSpawn = newTime;
@@ -191,6 +193,10 @@ void spawnEnemy()
 
 void handleMovement()
 {
+	if (player.isDead) {
+		player.animateDeath();
+		return;
+	}
 	if (keyW) {
 		if (keyD) {
 			player.moveUpRight();
@@ -223,6 +229,11 @@ void handleMovement()
 
 void aggroPlayer()
 {
+	if (player.getHp() <= 0)
+	{
+		player.isDead = true;
+		return;
+	}
 	for (int i = 0; i < enemies.size(); i++)
 	{
 		if (enemies[i].aggroPlayer(player.getX(), player.getY()) && SDL_GetTicks() - player.lastHitTime >= 1000)
@@ -255,8 +266,15 @@ void runGame()
 	while (!quit)
 	{
 		SDL_RenderClear(gRenderer);
-		if (player.getHp() <= 0) {
-			resetGame();
+		if (player.isDead) {
+			if (player_death_time == NULL)
+			{
+				player_death_time = SDL_GetTicks();
+			}
+			else if (player_death_time != NULL && SDL_GetTicks() - player_death_time >= 3000)
+			{
+				resetGame();
+			}
 		}
 		while (SDL_PollEvent(&e) != 0)
 		{

@@ -29,18 +29,22 @@ public:
 	int getHp();
 	void getDamage();
 	int getProjectileSpeed();
+	void animateDeath();
 	SDL_Texture* getTexture();
 	void setRenderer(SDL_Renderer* renderer);
 	int lastHitTime = SDL_GetTicks();
+	bool isDead = false;
 private:
 	int x;
 	int y;
 	int playerSpeed = 2;
 	int projectileSpeed = 1;
-	int hp = 6;
+	int hp = 1;
 	SDL_Texture* playerTexture;
 	int last_frame;
 	SDL_Renderer* gRenderer;
+	std::vector<std::string> playerdeathprites = { "player/graphics/playerdeath/death1.png",
+		"player/graphics/playerdeath/death2.png",  "player/graphics/playerdeath/death3.png", "player/graphics/playerdeath/death4.png" };
 	std::vector<std::string> playerrightsprites = { "player/graphics/playerright/playerright1.png",
 		"player/graphics/playerright/playerright2.png",  "player/graphics/playerright/playerright3.png" };
 	std::vector<std::string> playerleftsprites = { "player/graphics/playerleft/playerleft1.png",
@@ -49,7 +53,7 @@ private:
 		"player/graphics/playerup/playerup2.png",  "player/graphics/playerup/playerup3.png" };
 	std::vector<std::string> playerdownsprites = { "player/graphics/playerdown/playerdown1.png",
 		"player/graphics/playerdown/playerdown2.png",  "player/graphics/playerdown/playerdown3.png" };
-	std::vector<int> current_frame = { 0, 0, 0, 0 };
+	std::vector<int> current_frame = { 0, 0, 0, 0, 0 };
 	void changeFrame(MoveSide side);
 };
 
@@ -74,6 +78,16 @@ void Player::setX(int width)
 void Player::setRenderer(SDL_Renderer* renderer)
 {
 	this->gRenderer = renderer;
+}
+
+void Player::animateDeath()
+{
+	int time = SDL_GetTicks();
+	if (time - last_frame < 100) return;
+	last_frame = time;
+	this->playerTexture = IMG_LoadTexture(gRenderer, playerdeathprites[current_frame[4]].c_str());
+	if (current_frame[4] == 3) return;
+	current_frame[4] += 1;
 }
 
 void Player::changeFrame(MoveSide side)
