@@ -39,7 +39,7 @@ private:
 	int y;
 	int playerSpeed = 2;
 	int projectileSpeed = 1;
-	int hp = 1;
+	int hp = 6;
 	SDL_Texture* playerTexture;
 	int last_frame;
 	SDL_Renderer* gRenderer;
